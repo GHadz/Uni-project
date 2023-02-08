@@ -5,8 +5,8 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
     require_once "validate.php";
     //validate function to store the data properly
     $stmt = mysqli_stmt_init($conn);
-    $email = validate($_POST["email"]);
-    $password = validate($_POST["password"]);
+    $email = $_POST["email"];
+    $password = $_POST["password"];
     $p = md5($password);
     
     if ( mysqli_stmt_prepare($stmt,"SELECT * FROM users WHERE email=? AND password=?")) {
