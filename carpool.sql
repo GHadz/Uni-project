@@ -126,7 +126,7 @@ CREATE TABLE `users` (
   `userLastName` varchar(30) NOT NULL,
   `userName` varchar(30) NOT NULL,
   `userEmail` varchar(30) NOT NULL,
-  `userPassword` varchar(20) NOT NULL,
+  `userPassword` varchar(200) NOT NULL,
   `userPhone` varchar(30) NOT NULL,
   `userDriverRating` float NOT NULL DEFAULT 0,
   `userPassengerRating` float NOT NULL DEFAULT 0
