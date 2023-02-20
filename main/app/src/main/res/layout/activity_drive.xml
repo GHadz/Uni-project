@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:context=".ui.Drive_activity"
+
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:elevation="50dp"
+        app:cardBackgroundColor="@color/light_gray"
+        app:cardCornerRadius="10dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/txtDriver"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:gravity="center"
+                android:text="Driver Name:"
+                android:textColor="@color/blue"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.158"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/driverRatingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:layout_marginTop="8dp"
+                android:foregroundGravity="center"
+                android:numStars="5"
+                android:progressTint="#FFCC01"
+                app:layout_constraintEnd_toEndOf="@+id/txtDriver"
+                app:layout_constraintHorizontal_bias="0.437"
+                app:layout_constraintStart_toStartOf="@+id/txtDriver"
+                app:layout_constraintTop_toBottomOf="@+id/txtDriver" />
+
+            <TextView
+                android:id="@+id/txtStart"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Start Date:"
+                android:textColor="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.611"
+                app:layout_constraintStart_toEndOf="@+id/txtDriver"
+                app:layout_constraintTop_toTopOf="@+id/txtDriver" />
+
+            <TextView
+                android:id="@+id/txtSrc"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:text="Source:"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/txtStart"
+                app:layout_constraintTop_toTopOf="@+id/txtDest" />
+
+            <TextView
+                android:id="@+id/txtDest"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Destination:"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/txtDriver"
+                app:layout_constraintTop_toBottomOf="@+id/txtDriver" />
+
+            <TextView
+                android:id="@+id/txtDet"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:text="Details:"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/txtSeats"
+                app:layout_constraintTop_toBottomOf="@+id/txtSeats" />
+
+            <TextView
+                android:id="@+id/txtSeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Free seats:"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/txtDest"
+                app:layout_constraintTop_toBottomOf="@+id/txtDest" />
+
+            <TextView
+                android:id="@+id/txtPhone"
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:text="Driver phone:"
+                android:textColor="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/txtSrc"
+                app:layout_constraintTop_toTopOf="@+id/txtSeats" />
+
+            <TextView
+                android:id="@+id/txtCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Conditions"
+                android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+                android:textColor="@color/blue"
+                android:drawableTint="@color/blue"
+                app:layout_constraintStart_toStartOf="@+id/txtPhone"
+                app:layout_constraintTop_toTopOf="@+id/txtDet" />
+
+            <ListView
+                android:id="@+id/conditionList"
+                android:layout_width="143dp"
+                android:layout_height="114dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/blue"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/txtCondition"
+                app:layout_constraintHorizontal_bias="0.486"
+                app:layout_constraintStart_toStartOf="@+id/txtCondition"
+                app:layout_constraintTop_toBottomOf="@+id/txtCondition" />
+
+            <Button
+                android:id="@+id/reqBtn"
+                android:layout_width="114dp"
+                android:layout_height="63dp"
+                android:layout_marginTop="16dp"
+
+                app:layout_constraintEnd_toStartOf="@+id/txtStart"
+                app:layout_constraintStart_toEndOf="@+id/txtDriver"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="171dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
