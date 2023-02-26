@@ -112,15 +112,6 @@ CREATE TABLE `ridecondition` (
 -- Dumping data for table `ridecondition`
 --
 
-INSERT INTO `ridecondition` (`rideID`, `conditionID`, `conditionAllowed`) VALUES
-(1, 1, 0),
-(1, 2, 1),
-(1, 3, 0),
-(1, 4, 0),
-(2, 1, 1),
-(2, 2, 1),
-(2, 3, 1),
-(2, 4, 1);
 
 -- --------------------------------------------------------
 
