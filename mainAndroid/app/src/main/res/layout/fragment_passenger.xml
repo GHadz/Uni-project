@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PassengerFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2">
+
+        <Spinner
+            android:id="@+id/dropDown"
+            android:layout_width="126dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="100dp"
+            android:contentDescription="@string/spinner_select"
+            android:prompt="@string/spinner_select"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </Spinner>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="60sp"
+            android:layout_height="30sp"
+            android:text="@string/from"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/dropDown"
+            app:layout_constraintEnd_toEndOf="@+id/dropDown"
+            app:layout_constraintStart_toStartOf="@+id/dropDown" />
+
+        <TextView
+            android:id="@+id/Fanar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+        <TextView
+
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="76dp"
+            android:text="@string/fanar"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/dropDown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dropDown"
+            app:layout_constraintVertical_bias="0.38" />
+
+        <ImageButton
+            android:id="@+id/btn"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_baseline_compare_arrows_24"
+            app:layout_constraintBottom_toBottomOf="@+id/dropDown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dropDown"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/blue"
+            android:drawableEnd="@drawable/ic_baseline_search_24"
+            android:text="@string/search"
+            app:layout_constraintEnd_toEndOf="@+id/myReqs"
+            app:layout_constraintStart_toStartOf="@+id/myReqs"
+            app:layout_constraintTop_toBottomOf="@+id/btn" />
+
+        <Button
+            android:id="@+id/myReqs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/blue"
+            android:drawableEnd="@drawable/ic_baseline_list_24"
+            android:text="@string/my_requests"
+            app:layout_constraintBottom_toTopOf="@+id/btn"
+            app:layout_constraintEnd_toEndOf="@+id/btn"
+            app:layout_constraintHorizontal_bias="0.378"
+            app:layout_constraintStart_toStartOf="@+id/btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.785" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/driveList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="84dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reqList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/driveList" />
+
+
+        <TextView
+            android:id="@+id/txtReq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pending_requests"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/reqList"
+            app:layout_constraintEnd_toEndOf="@+id/reqList"
+            app:layout_constraintStart_toStartOf="@+id/reqList" />
+
+        <TextView
+            android:id="@+id/txtUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upcoming_rides"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/driveList"
+            app:layout_constraintEnd_toEndOf="@+id/driveList"
+            app:layout_constraintStart_toStartOf="@+id/driveList" />
+
+        <ImageButton
+            android:id="@+id/dropBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_baseline_arrow_drop_down_white"
+            app:layout_constraintBottom_toBottomOf="@+id/searchBtn"
+            app:layout_constraintEnd_toStartOf="@+id/searchBtn"
+            app:layout_constraintTop_toTopOf="@+id/searchBtn"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/plusBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="@color/blue"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintBottom_toBottomOf="@+id/searchBtn"
+            app:layout_constraintStart_toEndOf="@+id/searchBtn"
+            app:layout_constraintTop_toTopOf="@+id/searchBtn"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectedConditions"
+            android:layout_width="297dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="16dp"
+
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@+id/plusBtn"
+            app:layout_constraintStart_toStartOf="@+id/dropBtn"
+            app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
+
+        <TextView
+            android:id="@+id/noCond"
+            android:visibility="gone"
+            android:layout_width="352dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/no_conditions_selected_click_on_the_button_to_add_conditions"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@+id/plusBtn"
+            app:layout_constraintStart_toStartOf="@+id/dropBtn"
+            app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

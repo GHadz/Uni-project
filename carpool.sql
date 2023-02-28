@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2023 at 05:18 PM
+-- Generation Time: Feb 20, 2023 at 02:24 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -32,6 +32,16 @@ CREATE TABLE `conditions` (
   `conditionName` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `conditions`
+--
+
+INSERT INTO `conditions` (`conditionID`, `conditionName`) VALUES
+(1, 'Pets Allowed'),
+(2, 'Eating Allowed'),
+(3, 'Smoking Allowed'),
+(4, 'A.C On');
+
 -- --------------------------------------------------------
 
 --
@@ -42,6 +52,19 @@ CREATE TABLE `locations` (
   `locationID` int(11) NOT NULL,
   `locationName` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`locationID`, `locationName`) VALUES
+(1, 'Fanar'),
+(2, 'Zouk Mosbeh'),
+(3, 'Jal el Dib'),
+(4, 'Beirut'),
+(5, 'Antelias'),
+(6, 'Jdeide'),
+(7, 'Jbeil');
 
 -- --------------------------------------------------------
 
@@ -85,6 +108,11 @@ CREATE TABLE `ridecondition` (
   `conditionAllowed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ridecondition`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -103,6 +131,11 @@ CREATE TABLE `rides` (
   `statusID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+--
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -113,6 +146,19 @@ CREATE TABLE `statuses` (
   `statusID` int(11) NOT NULL,
   `statusName` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `statuses`
+--
+
+INSERT INTO `statuses` (`statusID`, `statusName`) VALUES
+(1, 'Starting soon'),
+(2, 'Ongoing'),
+(3, 'Ended'),
+(4, 'Cancelled'),
+(5, 'Accepted'),
+(6, 'Rejected'),
+(7, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -126,11 +172,14 @@ CREATE TABLE `users` (
   `userLastName` varchar(30) NOT NULL,
   `userName` varchar(30) NOT NULL,
   `userEmail` varchar(30) NOT NULL,
-  `userPassword` varchar(20) NOT NULL,
+  `userPassword` varchar(200) NOT NULL,
   `userPhone` varchar(30) NOT NULL,
   `userDriverRating` float NOT NULL DEFAULT 0,
   `userPassengerRating` float NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+
 
 --
 -- Indexes for dumped tables
@@ -202,13 +251,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `conditions`
 --
 ALTER TABLE `conditions`
-  MODIFY `conditionID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `conditionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `locationID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `locationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `requestride`
@@ -226,19 +275,19 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `rides`
 --
 ALTER TABLE `rides`
-  MODIFY `rideID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rideID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `statuses`
 --
 ALTER TABLE `statuses`
-  MODIFY `statusID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `statusID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -279,3 +328,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

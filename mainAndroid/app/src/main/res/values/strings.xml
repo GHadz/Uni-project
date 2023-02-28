@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">main</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_passenger">Find a Ride</string>
+    <string name="menu_Driver">Your Rides</string>
+    <string name="menu_Account">Account</string>
+    <string name="spinner_select">Select</string>
+    <string name="logout">log out</string>
+    <string name="Fanar">Fanar</string>
+    <string name="leave">Leave Ride</string>
+    <string name="make">Make Request</string>
+    <string name="cancel">Cancel request</string>
+    <string name="from">From:</string>
+    <string name="to">To:</string>
+    <string name="fanar">Fanar</string>
+   <string name="noUp">You have no upcoming rides, make a request to join one.</string>
+    <string name="noReq">You have made no request, search for a ride to join.</string>
+    <string name="noRide">We have 0 rides that match ur requirements, try again later.</string>
+    <string name="my_requests">My requests</string>
+    <string name="pending_requests">Pending Requests</string>
+    <string name="upcoming_rides">Upcoming Rides</string>
+    <string name="search">search</string>
+    <string name="submit">Submit</string>
+    <string name="cancel2">Cancel</string>
+    <string name="no_conditions_selected_click_on_the_button_to_add_conditions">No conditions selected, click on the + button to add conditions.</string>
+    <string-array name="Locations">
+        <item>Fanar</item>
+        <item>Jbeil</item>
+        <item>Jdeide</item>
+        <item>Jal el Dib</item>
+        <item>Antelias</item>
+        <item>Zouk Mosbeh</item>
+        <item>Jounieh</item>
+        <item>Beirut</item>
+
+    </string-array>
+</resources>
