@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Carpoolify</title>
@@ -138,6 +138,10 @@
       })(window, document);
     </script>
   </head>
+
+
+
+
   <body>
     <div class="limiter">
       <div
@@ -145,7 +149,7 @@
         style="background-image: url('../assets/img/hero-bg.jpg')"
       >
         <div class="wrap-signup100 p-l-55 p-r-55 p-t-65 p-b-54">
-          <form class="login100-form validate-form">
+          <form class="login100-form validate-form" action="signup.php" method="POST">
             <span class="login100-form-title p-b-49"> Sign Up </span>
 
             <!-- First Name -->
@@ -161,6 +165,7 @@
                     type="text"
                     name="firstName"
                     placeholder="Enter Your First Name"
+                    required
                   />
                 </div>
               </div>
@@ -176,6 +181,7 @@
                     type="text"
                     name="lastName"
                     placeholder="Enter Your Last Name"
+                    required
                   />
                 </div>
               </div>
@@ -193,6 +199,7 @@
                     type="text"
                     name="username"
                     placeholder="Enter Your Username"
+                    required
                   />
                 </div>
               </div>
@@ -208,6 +215,7 @@
                     type="email"
                     name="email"
                     placeholder="Enter Your Email"
+                    required
                   />
                 </div>
               </div>
@@ -225,6 +233,7 @@
                     type="password"
                     name="pass"
                     placeholder="Enter Your Password"
+                    required
                   />
                 </div>
               </div>
@@ -240,9 +249,29 @@
                     type="number"
                     name="phone"
                     placeholder="Enter Your Phone Number"
+                    required
                   />
                 </div>
               </div>
+       <!-- rePassword -->
+       <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div
+            class="wrap-input50 validate-input m-b-23"
+            data-validate="Password is required"
+          >
+            <span class="label-input100">Confirm Password</span>
+            <input
+              class="input100"
+              type="password"
+              name="repass"
+              placeholder="Enter Your Password Again"
+              required
+            />
+          </div>
+        </div>
+             
+
             </div>
 
             <div class="container-login100-form-btn p-t-40 p-b-30">
