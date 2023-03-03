@@ -1,23 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:id="@+id/container"
     android:layout_width="match_parent"
+    android:focusable="true"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+
     android:layout_height="match_parent"
     tools:context=".ui.AccountFragment">
 
-    <TextView
-        android:id="@+id/text_slideshow"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="Account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="3dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="88dp"
+            android:layout_height="39dp"
+            android:text="Driver Rating"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RatingBar
+            android:id="@+id/passengerRecycler"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:foregroundGravity="center"
+            android:numStars="5"
+            android:progressTint="#FFCC01"
+            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="@+id/textView5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="3dp">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="88dp"
+                android:layout_height="39dp"
+                android:text="Passenger Rating"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/passengerRatingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:foregroundGravity="center"
+                android:numStars="5"
+                android:progressTint="#FFCC01"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toTopOf="@+id/textView6" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+        <EditText
+            android:id="@+id/FName"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+
+            android:background="@drawable/custom_input"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="First Name" />
+
+
+
+        <EditText
+            android:id="@+id/LName"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_input"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Last Name" />
+        <EditText
+            android:id="@+id/Name"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_input"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="UserName" />
+
+        <EditText
+            android:id="@+id/Phone"
+            android:drawableLeft="@drawable/ic_baseline_numbers_24"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:background="@drawable/custom_input"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="phone"
+            android:hint="Phone Number" />
+
+        <EditText
+            android:id="@+id/inEmail"
+            android:drawableLeft="@drawable/ic_baseline_email"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:background="@drawable/custom_input"
+            android:layout_marginTop="12dp"
+            android:inputType="textEmailAddress"
+            android:hint="Email"/>
+
+        <EditText
+            android:id="@+id/inPassword"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:background="@drawable/custom_input"
+            android:layout_marginTop="12dp"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:focusable="false"
+            android:hint="Password"/>
+
+
+
+        <Button
+            android:id="@+id/register"
+            android:backgroundTint="@color/blue"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Save changes" />
+
+
+
+
+    </LinearLayout>
+</LinearLayout>

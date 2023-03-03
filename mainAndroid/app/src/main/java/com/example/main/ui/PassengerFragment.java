@@ -5,8 +5,6 @@ import static com.example.main.LOGIN.Login_SignUp_Main.ip;
 import static com.example.main.MainActivity.user_id;
 
 import android.app.AlertDialog;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,14 +21,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -51,7 +47,7 @@ public class PassengerFragment extends Fragment {
 private Spinner drop;
 private String sIds,sConds; //conditions and ids to be searched
 private RecyclerView reqRecycler, conditionRecycler,drivesRecycler;
-private ArrayList<drive> drives;
+private ArrayList<Drive> drives;
 private ArrayList<String> location,condition,ids,addedIds;
 private ArrayList<Model> conditionsModel;
 private ArrayList<Requests> requests;
@@ -81,11 +77,11 @@ private boolean toFanar,conditionsDown;
         v = inflater.inflate(R.layout.fragment_passenger,container,false);
         drop = v.findViewById(R.id.dropDown);
         btn = v.findViewById(R.id.btn);
-        searchBtn = v.findViewById(R.id.searchBtn);
+        searchBtn = v.findViewById(R.id.newBtn);
         add = v.findViewById(R.id.plusBtn);
         dropDown = v.findViewById(R.id.dropBtn);
         myReq = v.findViewById(R.id.myReqs);
-        txt = v.findViewById(R.id.textView2);
+        txt = v.findViewById(R.id.dropTxt);
         fanar = v.findViewById(R.id.Fanar);
         txtNoCond = v.findViewById(R.id.noCond);
         txtReq = v.findViewById(R.id.txtReq);
@@ -164,7 +160,7 @@ private boolean toFanar,conditionsDown;
     public void search()
     {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -181,7 +177,7 @@ private boolean toFanar,conditionsDown;
                         date = o.getString("date");
                         source = o.getString("src");
                         dest = o.getString("dest");
-                        drives.add(new drive(id1, name,date, source,dest));
+                        drives.add(new Drive(id1, name,date, source,dest));
                     }
                     if (drives.isEmpty()){txtUp.setText(R.string.noRide); txtUp.setVisibility(View.VISIBLE);}
                     else txtUp.setVisibility(View.INVISIBLE);//displays if there is no match
@@ -211,10 +207,11 @@ private boolean toFanar,conditionsDown;
                 if (!drop.getSelectedItem().toString().equals("No Location")) {
                     dropLoc = drop.getSelectedItem().toString();
                     if (toFanar) {
-                        data.put("src", dropLoc);
+
+                        data.put("src", drop.getSelectedItem().toString());
                         data.put("dest", "Fanar");
                     } else {
-                        data.put("dest", drop.getSelectedItem().toString());
+                        data.put("dest",drop.getSelectedItem().toString());
                         data.put("src", "Fanar");
                     }
                 }
@@ -226,6 +223,7 @@ private boolean toFanar,conditionsDown;
                         data.put("src", "Fanar");
                     }
                 }
+                data.put("id",user_id);
                 return data;
             }
         };
@@ -236,7 +234,7 @@ private boolean toFanar,conditionsDown;
     //find the request that were accepted = upcoming rides
     public void acceptedRequests()
     {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL2, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, URL2, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONArray array;
@@ -252,7 +250,7 @@ private boolean toFanar,conditionsDown;
                         date = o.getString("date");
                         source = o.getString("src");
                         dest = o.getString("dest");
-                        drives.add(new drive(id1, name,date, source,dest));
+                        drives.add(new Drive(id1, name,date, source,dest));
                     }
                     if (drives.isEmpty()){txtUp.setText(R.string.noUp);}
                     else txtUp.setText(R.string.upcoming_rides);
@@ -284,7 +282,7 @@ private boolean toFanar,conditionsDown;
 //pending requests
     public void myRequests()
     {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL3, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, URL3, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONArray array;
@@ -347,7 +345,7 @@ private boolean toFanar,conditionsDown;
     public void getLocations()
     {
         location = new ArrayList<>();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL4, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, URL4, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 location.add("No Location");
@@ -360,7 +358,7 @@ private boolean toFanar,conditionsDown;
                         name = o.getString("name");
                         location.add(name);
                     }
-            adapter = new ArrayAdapter<String>(v.getContext(), android.R.layout.simple_spinner_item,location);
+            adapter = new ArrayAdapter<String>(v.getContext(), R.layout.custom_spinner,location);
                     drop.setAdapter(adapter);//set the array that was imported from the database for the list
                 }
                 catch (JSONException e) {
@@ -383,7 +381,7 @@ private boolean toFanar,conditionsDown;
         conditionsModel = new ArrayList<>();
         condition = new ArrayList<>();
         ids = new ArrayList<>();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL5, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, URL5, new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
 
@@ -480,7 +478,7 @@ private boolean toFanar,conditionsDown;
 //search with conditions added
     public void searchWithConditions()
     {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL6, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, URL6, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -507,7 +505,7 @@ private boolean toFanar,conditionsDown;
                         date = o.getString("date");
                         source = o.getString("src");
                         dest = o.getString("dest");
-                        drives.add(new drive(id1, name,date, source,dest));
+                        drives.add(new Drive(id1, name,date, source,dest));
                     }
                     if (drives.isEmpty()){txtUp.setText(R.string.noRide); txtUp.setVisibility(View.VISIBLE);}
                     else txtUp.setVisibility(View.INVISIBLE);//displays if there is no match

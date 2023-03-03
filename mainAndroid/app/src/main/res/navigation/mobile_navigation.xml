@@ -22,4 +22,10 @@
         android:name="com.example.main.ui.AccountFragment"
         android:label="@string/menu_Account"
         tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/nav_review"
+        android:name="com.example.main.ui.ReviewFragment"
+        android:label="@string/reviews"
+        tools:layout="@layout/fragment_review" />
 </navigation>

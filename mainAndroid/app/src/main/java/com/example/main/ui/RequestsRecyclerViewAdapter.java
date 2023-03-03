@@ -1,7 +1,6 @@
 package com.example.main.ui;
 
 import static com.example.main.LOGIN.Login_SignUp_Main.ip;
-import static com.example.main.MainActivity.user_id;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,8 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -25,12 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.main.MainActivity;
 import com.example.main.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -116,10 +108,10 @@ public class RequestsRecyclerViewAdapter extends RecyclerView.Adapter<RequestsRe
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtName = itemView.findViewById(R.id.textName);
-            txtTime= itemView.findViewById(R.id.textTime);
-            txtDest = itemView.findViewById(R.id.textDest);
-            txtSrc= itemView.findViewById(R.id.textSource);
+            txtName = itemView.findViewById(R.id.txtCount);
+            txtTime= itemView.findViewById(R.id.txtTime);
+            txtDest = itemView.findViewById(R.id.txtdest);
+            txtSrc= itemView.findViewById(R.id.txtdet);
             btn = itemView.findViewById(R.id.del);
             v = itemView.findViewById(R.id.parent);
         }

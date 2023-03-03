@@ -17,51 +17,51 @@
     android:layout_marginVertical="5dp">
 
     <TextView
-        android:id="@+id/textName"
+        android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:text="Driver:"
+        android:text="@string/driver"
         android:textColor="@color/blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textTime"
+        android:id="@+id/txtTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textName"
+        android:layout_below="@+id/txtName"
         android:layout_marginTop="20dp"
-        android:text="Start time:"
+        android:text="@string/start_time"
         android:textColor="@color/blue"
-        app:layout_constraintStart_toStartOf="@+id/textName"
-        app:layout_constraintTop_toBottomOf="@+id/textName" />
+        app:layout_constraintStart_toStartOf="@+id/txtName"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
     <TextView
-        android:id="@+id/textDest"
+        android:id="@+id/txtdest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_toRightOf="@+id/textName"
-        android:text="Destination:"
+        android:layout_toRightOf="@+id/txtName"
+        android:text="@string/destination"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@+id/textSource"
-        app:layout_constraintStart_toStartOf="@+id/textSource"
-        app:layout_constraintTop_toTopOf="@+id/textName" />
+        app:layout_constraintBottom_toTopOf="@+id/txtSrc"
+        app:layout_constraintStart_toStartOf="@+id/txtSrc"
+        app:layout_constraintTop_toTopOf="@+id/txtName" />
 
     <TextView
-        android:id="@+id/textSource"
+        android:id="@+id/txtSrc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textDest"
-        android:layout_alignLeft="@id/textDest"
+        android:layout_below="@id/txtdest"
+        android:layout_alignStart="@id/txtdest"
         android:layout_marginStart="40dp"
-        android:text="Source:"
+        android:text="@string/source"
         android:textColor="@color/blue"
-        app:layout_constraintBottom_toBottomOf="@+id/textTime"
-        app:layout_constraintStart_toEndOf="@+id/textTime"
-        app:layout_constraintTop_toTopOf="@+id/textTime" />
+        app:layout_constraintBottom_toBottomOf="@+id/txtTime"
+        app:layout_constraintStart_toEndOf="@+id/txtTime"
+        app:layout_constraintTop_toTopOf="@+id/txtTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

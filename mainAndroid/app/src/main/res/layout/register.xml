@@ -74,7 +74,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"/>
+        android:hint="@string/password"/>
 
     <EditText
         android:id="@+id/inPassword2"
@@ -85,14 +85,15 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Re-enter password"/>
+        android:hint="@string/re_enter_password"/>
 
     <Button
         android:id="@+id/button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
         android:layout_gravity="center"
-        android:text="Register" />
+        android:text="@string/register" />
 
     <TextView
         android:id="@+id/tvStatus"

@@ -1,13 +1,25 @@
 package com.example.main.ui;
 //class for the ride format that we're gonna list with all the needed details
-public class drive {
-    private String driveId,driverName,date,destination,source;
-    public drive(String driveId, String driverName, String date, String source, String destination) {
+public class Drive {
+    private String driveId,driverName,date,destination,source,status;
+    private int passengerNbr,capacity;
+
+    //used in the passenger fragment so the passenger can see the ride he requested to join
+    public Drive(String driveId, String driverName, String date, String source, String destination) {
         this.driveId = driveId;
         this.driverName = driverName;
         this.date = date;
         this.destination = destination;
         this.source = source;
+    }
+    //used in the driver fragment to see the driver details for the request
+    public Drive(String driveId, String date, int pass, String stat,int capacity) {
+        this.driveId = driveId;
+        this.date =date;
+        this.passengerNbr = pass;
+        this.status = stat;
+        this.capacity = capacity;
+
     }
 
     public String getDriverName() {
@@ -48,5 +60,29 @@ public class drive {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getPassengerNbr() {
+        return passengerNbr;
+    }
+
+    public void setPassengerNbr(int passengerNbr) {
+        this.passengerNbr = passengerNbr;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }

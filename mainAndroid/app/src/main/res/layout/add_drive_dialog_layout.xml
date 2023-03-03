@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/ride_details"
+            android:textColor="@color/blue"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/inDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_input"
+            android:ems="10"
+            android:hint="Request details"
+            android:inputType="textPersonName"
+            android:paddingBottom="5dp" />
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtNbrPicker"
+        android:layout_width="160dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/max_capacity"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <NumberPicker
+        android:id="@+id/numb"
+        android:layout_width="67dp"
+        android:layout_height="40dp"
+        android:solidColor="@color/blue"
+        android:layout_marginStart="19dp"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/txtNbrPicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtNbrPicker"
+        app:layout_constraintTop_toTopOf="@+id/txtNbrPicker" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/blue"
+    android:text="@string/date_of_the_ride"/>
+        <DatePicker
+            android:id="@+id/editTextDate"
+            android:layout_width="302dp"
+            android:layout_height="77dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:calendarTextColor="@color/blue"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:ems="10"
+            android:inputType="date"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="10dp" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/time_of_the_ride"
+    android:textColor="@color/blue"/>
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="278dp"
+            
+            android:layout_height="80dp"
+            android:timePickerMode="spinner" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="@string/cancel2"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@android:color/transparent"
+        android:text="@string/submit"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@
     <string name="from">From:</string>
     <string name="to">To:</string>
     <string name="fanar">Fanar</string>
-   <string name="noUp">You have no upcoming rides, make a request to join one.</string>
+    <string name="noUp">You have no upcoming rides, make a request to join one.</string>
     <string name="noReq">You have made no request, search for a ride to join.</string>
     <string name="noRide">We have 0 rides that match ur requirements, try again later.</string>
     <string name="my_requests">My requests</string>
@@ -28,6 +28,20 @@
     <string name="submit">Submit</string>
     <string name="cancel2">Cancel</string>
     <string name="no_conditions_selected_click_on_the_button_to_add_conditions">No conditions selected, click on the + button to add conditions.</string>
+    <string name="name">Name</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="re_enter_new_password">Re-enter new Password</string>
+    <string name="re_enter_password">Re-enter password</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="check">Check</string>
+    <string name="enter_old_password">Enter old Password</string>
+    <string name="start_a_ride">Start a ride</string>
+    <string name="status">Status:</string>
+    <string name="start_time">Start time:</string>
+    <string name="passenger_count">Passenger Count:</string>
+    <string name="requests_on_this_ride">Requests on this ride:</string>
+    <string name="reviews">Reviews</string>
     <string-array name="Locations">
         <item>Fanar</item>
         <item>Jbeil</item>
@@ -39,4 +53,21 @@
         <item>Beirut</item>
 
     </string-array>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rating">Rating</string>
+    <string name="max_capacity">Max capacity:</string>
+    <string name="ride_details">Ride Details:</string>
+    <string name="date_of_the_ride">Date of the ride:</string>
+    <string name="time_of_the_ride">Time of the ride:</string>
+    <string name="pending">Pending requests:</string>
+    <string name="accepted">Accepted Requests:</string>
+    <string name="no_requests_on_this_ride">No requests on this ride.</string>
+    <string name="close">Close</string>
+    <string name="destination">Destination:</string>
+    <string name="driver">Driver:</string>
+    <string name="source">Source:</string>
+    <string name="start_ride">Depart</string>
+    <string name="end">End ride</string>
+    <string name="myridesEmpty">No upcoming rides, make sure to start one if u get the chance!</string>
 </resources>

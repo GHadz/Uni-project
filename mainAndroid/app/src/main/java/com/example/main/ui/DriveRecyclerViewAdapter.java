@@ -1,7 +1,5 @@
 package com.example.main.ui;
 
-import static com.example.main.LOGIN.Login_SignUp_Main.ip;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -20,7 +18,7 @@ import com.example.main.R;
 import java.util.ArrayList;
 //adapter for the drives recycler view
 public class DriveRecyclerViewAdapter extends RecyclerView.Adapter<DriveRecyclerViewAdapter.ViewHolder>{
-    private ArrayList <drive> drives = new ArrayList();
+    private ArrayList <Drive> drives = new ArrayList();
     private Context c;
     private Fragment f;
     private FragmentActivity i;
@@ -40,10 +38,19 @@ public class DriveRecyclerViewAdapter extends RecyclerView.Adapter<DriveRecycler
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtName.setText(drives.get(position).getDriverName());
-        holder.txtCar.setText(drives.get(position).getDate());
-        holder.txtDest.setText(drives.get(position).getDestination());
-        holder.txtSource.setText(drives.get(position).getSource());
+        String a,b,c,d;
+        a = holder.txtName.getText().toString();
+        a+= drives.get(position).getDriverName();
+        b=holder.txtTime.getText().toString();
+        b+=drives.get(position).getDate();
+        c=holder.txtDest.getText().toString();
+        c+=drives.get(position).getDestination();
+        d=holder.txtSource.getText().toString();
+        d+=drives.get(position).getSource();
+        holder.txtName.setText(a);
+        holder.txtTime.setText(b);
+        holder.txtDest.setText(c);
+        holder.txtSource.setText(d);
         String s = drives.get(position).getDriveId();
         holder.v.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +77,15 @@ public class DriveRecyclerViewAdapter extends RecyclerView.Adapter<DriveRecycler
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{ //view holder to set the txt views and listeners
-        private TextView txtName,txtCar,txtDest,txtSource;
+        private TextView txtName, txtTime,txtDest,txtSource;
         private CardView v;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtName = itemView.findViewById(R.id.textName);
-            txtCar = itemView.findViewById(R.id.textTime);
-            txtDest = itemView.findViewById(R.id.textDest);
-            txtSource = itemView.findViewById(R.id.textSource);
+            txtName = itemView.findViewById(R.id.txtName);
+            txtTime = itemView.findViewById(R.id.txtTime);
+            txtDest = itemView.findViewById(R.id.txtdest);
+            txtSource = itemView.findViewById(R.id.txtSrc);
             v = itemView.findViewById(R.id.parent);
         }
     }

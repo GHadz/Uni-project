@@ -62,10 +62,10 @@ private TextView txtDName,txtStart,txtSrc,txtDest,txtDet,txtSeats,txtPhone,txtCo
         id = intent.getStringExtra("id"); //passing the drive id
         list = findViewById(R.id.conditionList);
         button = findViewById(R.id.reqBtn);
-        rating = findViewById(R.id.driverRatingBar);
+        rating = findViewById(R.id.ratingBar);
         listDown = false;
         txtCondition = findViewById(R.id.txtCondition);
-        txtDName = findViewById(R.id.txtDriver);
+        txtDName = findViewById(R.id.txtPassengers);
         txtStart = findViewById(R.id.txtStart);
         txtSrc = findViewById(R.id.txtSrc);
         txtDest = findViewById(R.id.txtDest);
@@ -146,6 +146,7 @@ private TextView txtDName,txtStart,txtSrc,txtDest,txtDet,txtSeats,txtPhone,txtCo
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> data = new HashMap<>();
                 data.put("id", id);
+                data.put("userId",user_id);
                 return data;
             }
         };
@@ -160,10 +161,12 @@ private TextView txtDName,txtStart,txtSrc,txtDest,txtDet,txtSeats,txtPhone,txtCo
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL4, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 if(response.equals("failure"))
                 {countPending = 0;
                 }
                 else {
+
                     countPending = Integer.parseInt(response);
                 }
                 mainButton();
@@ -179,6 +182,7 @@ private TextView txtDName,txtStart,txtSrc,txtDest,txtDet,txtSeats,txtPhone,txtCo
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> data = new HashMap<>();
                 data.put("id", id);
+                data.put("userId",user_id);
                 return data;
             }
         };
@@ -189,7 +193,6 @@ private TextView txtDName,txtStart,txtSrc,txtDest,txtDet,txtSeats,txtPhone,txtCo
     //gets the ride conditions that can be displayed when clicked on
     public void getConditions() {
 
-        listItems.add(new Model(true, "asd"));
         adapter = new CustomAdapter(Drive_activity.this,false);
         adapter.setModelArrayList(listItems);
         list.setAdapter(adapter);

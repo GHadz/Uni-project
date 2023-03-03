@@ -131,7 +131,7 @@ public class CustomAdapter  extends BaseAdapter {
 
     private class ViewHolder {
 
-        protected CheckBox checkBox;
+        private CheckBox checkBox;
         private TextView condition;
 
     }

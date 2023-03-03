@@ -18,8 +18,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.main.LOGIN.Login_SignUp_Main;
-import com.example.main.ui.drive;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.Nullable;
@@ -43,17 +41,17 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    public static String user_id; //id to be passed to all the fragments/classes
+    public static String user_id = "3"; //id to be passed to all the fragments/classes
     private Intent intent;
     private Button btn;
-    private String Url = "http://"+ip+"//carpool/passenger/header.php";
-    private TextView username,email;
+    private String Url = "http://" + ip + "//carpool/passenger/header.php";
+    public TextView username, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         intent = getIntent();
-        user_id = intent.getStringExtra("id"); //get the id from the login
+        //user_id = intent.getStringExtra("id");!!!!!!!!! //get the id from the login
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         /*Passing each menu ID as a set of Ids because each
         menu should be considered as top level destinations.*/
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_passenger, R.id.nav_driver, R.id.nav_account)
+                R.id.nav_passenger, R.id.nav_driver, R.id.nav_account,R.id.nav_review)
                 .setOpenableLayout(drawer)
                 .build(); //each fragment id from navigation xml
         /* control the navigation from the fragments through
@@ -101,30 +99,27 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void details()
-    {
+    public void details() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Url, new Response.Listener<String>() {
             @Override //response function
             public void onResponse(String response) {  //if php echoes failure then password is wrong
-                    JSONArray array;
-                    try {
-                        array = new JSONArray(response);
-                        String name,emailString;
-                        name = emailString ="";
-                        for (int i = 0; i < array.length(); i++)
-                        {
-                            JSONObject o = array.getJSONObject(i);
-                            name = o.getString("name");
-                            emailString = o.getString("email");
+                JSONArray array;
+                try {
+                    array = new JSONArray(response);
+                    String name, emailString;
+                    name = emailString = "";
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject o = array.getJSONObject(i);
+                        name = o.getString("name");
+                        emailString = o.getString("email");
 
-                        }
-                        username.setText(name);
-                        email.setText(emailString);
                     }
-                    catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(MainActivity.this,"error",Toast.LENGTH_SHORT).show();
-                    }
+                    username.setText(name);
+                    email.setText(emailString);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+                }
 
             }
         }, new Response.ErrorListener() {
@@ -147,4 +142,6 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
         requestQueue.add(stringRequest);
     }
+
+
 }

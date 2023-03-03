@@ -18,7 +18,7 @@ private String ip;
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-//sets which fragment to show according to th eposition
+//sets which fragment to show according to the position
         if (position==1){
         RegisterFragment register = new RegisterFragment();
 
