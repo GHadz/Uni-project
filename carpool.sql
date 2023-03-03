@@ -108,10 +108,10 @@ CREATE TABLE `ridecondition` (
   `conditionAllowed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `ridecondition`
---
-
+ALTER TABLE `ridecondition`
+  ADD PRIMARY KEY (`rideID`,`conditionID`),
+  ADD KEY `rideID` (`rideID`),
+  ADD KEY `conditionID` (`conditionID`);
 
 -- --------------------------------------------------------
 
