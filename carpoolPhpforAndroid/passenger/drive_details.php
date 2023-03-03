@@ -1,11 +1,12 @@
 <?php
-if(isset($_POST["id"])){
+if(isset($_POST["id"])&&isset($_POST["userId"])){
 require_once "conn.php";
 $idS = $_POST["id"];
+$userId = $_POST["userId"];
 $stmt = mysqli_stmt_init($conn);
-if ( mysqli_stmt_prepare($stmt,"SELECT users.userName,users.userDriverRating,rides.startDate,rides.details,rides.maxCapacity,rides.nbPassengers,users.userPhone,A.locationName,B.locationName,COUNT(requestride.rideId) FROM rides,users,locations A,locations B,requestride WHERE rides.rideID = ? AND requestride.statusID=5 AND rides.driverID = users.userID AND rides.sourceID = A.locationID AND rides.destinationID = B.locationID;")) {
+if ( mysqli_stmt_prepare($stmt,"SELECT users.userName,users.userDriverRating,rides.startDate,rides.details,rides.maxCapacity,rides.nbPassengers,users.userPhone,A.locationName,B.locationName,COUNT(requestride.rideId) FROM rides,users,locations A,locations B,requestride WHERE rides.rideID = ? AND requestride.statusID=5 AND requestride.passengerID = ?  AND rides.driverID = users.userID AND rides.sourceID = A.locationID AND rides.destinationID = B.locationID;")) {
     // Bind parameters
-    mysqli_stmt_bind_param($stmt,"s", $idS);
+    mysqli_stmt_bind_param($stmt,"ss", $idS,$userId);
     // Execute query
      mysqli_stmt_execute($stmt);
     // Bind result variables

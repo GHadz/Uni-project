@@ -21,7 +21,7 @@ if(isset($_POST['id'])&&isset($_POST['name'])&&isset($_POST['email'])&& isset($_
     else $sql ="UPDATE users SET users.userFirstName = ?,users.userLastName = ?,users.userName = ?,users.userEmail =?,users.userPhone =?  WHERE users.userID = ?";
     //basic email format check
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo("not_valid");
+        echo("not_validddd");
       }
       elseif(!domain_exists($email))//domain check
       {

@@ -3,7 +3,7 @@ if(isset($_POST["id"])){
 require_once "conn.php";
 $idS = $_POST["id"];
 $stmt = mysqli_stmt_init($conn);
-if ( mysqli_stmt_prepare($stmt,"SELECT rides.rideID,users.userName,rides.startDate,A.locationName,B.locationName FROM rides,users,statuses,requestride,locations A,locations B WHERE requestride.passengerID = ? AND requestride.rideID = rides.rideID AND requestride.statusID = statuses.statusID AND statuses.statusName = 'Accepted' AND rides.driverID = users.userID AND rides.sourceID = A.locationID  AND rides.destinationID = b.locationID;")) {
+if ( mysqli_stmt_prepare($stmt,"SELECT rides.rideID,users.userName,rides.startDate,A.locationName,B.locationName FROM rides,users,statuses,requestride,locations A,locations B WHERE requestride.passengerID = ?  AND requestride.rideID = rides.rideID AND requestride.statusID = statuses.statusID AND statuses.statusName = 'Accepted' AND rides.driverID = users.userID AND rides.sourceID = A.locationID  AND rides.destinationID = b.locationID;")) {
     // Bind parameters
     mysqli_stmt_bind_param($stmt,"s", $idS);
     // Execute query
