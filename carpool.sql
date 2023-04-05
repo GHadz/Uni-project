@@ -323,6 +323,18 @@ ALTER TABLE `rides`
   ADD CONSTRAINT `fk_rides_locations_sourceID` FOREIGN KEY (`sourceID`) REFERENCES `locations` (`locationID`),
   ADD CONSTRAINT `fk_rides_statuses_statusID` FOREIGN KEY (`statusID`) REFERENCES `statuses` (`statusID`),
   ADD CONSTRAINT `fk_rides_users_driverID` FOREIGN KEY (`driverID`) REFERENCES `users` (`userID`);
+
+CREATE TRIGGER `accepted` AFTER UPDATE ON `requestride`
+ FOR EACH ROW IF (NEW.statusID = (SELECT statusID FROM statuses WHERE statusName = 'accepted')) THEN
+    UPDATE rides SET rides.nbPassengers = rides.nbPassengers + 1 WHERE rides.rideID = NEW.rideID;
+  END IF
+
+CREATE TRIGGER `rejected` AFTER UPDATE ON `requestride`
+ FOR EACH ROW IF (NEW.statusID = (SELECT statusID FROM statuses WHERE statusName = 'rejected')) THEN
+    UPDATE rides SET rides.nbPassengers = rides.nbPassengers - 1 WHERE rides.rideID = NEW.rideID;
+  END IF
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
