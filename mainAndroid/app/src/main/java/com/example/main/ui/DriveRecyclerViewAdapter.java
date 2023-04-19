@@ -58,6 +58,7 @@ public class DriveRecyclerViewAdapter extends RecyclerView.Adapter<DriveRecycler
                 Intent intent = new Intent(i,Drive_activity.class);
                 intent.putExtra("id",s); //passing the drive id to the details activity so we can search for the ride
                 i.startActivity(intent);
+
             }
         });
     }

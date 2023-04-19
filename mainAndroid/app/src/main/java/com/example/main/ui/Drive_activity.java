@@ -155,6 +155,7 @@ private TextView txtDName,txtStart,txtSrc,txtDest,txtDet,txtSeats,txtPhone,txtCo
 
     }
 
+
     //get pending req count (didn't work in same query) main button used inside it to check for pending requests
     public void pendingReq()
     {
@@ -344,6 +345,8 @@ private TextView txtDName,txtStart,txtSrc,txtDest,txtDet,txtSeats,txtPhone,txtCo
                 if(response.equals("success"))
                 {
                     Toast.makeText(Drive_activity.this,"Request has been cancelled",Toast.LENGTH_SHORT).show();
+                    countPending--;
+                    mainButton();
                 }
                 else Toast.makeText(Drive_activity.this,"Some error happened",Toast.LENGTH_SHORT).show();
             }
@@ -373,6 +376,8 @@ private TextView txtDName,txtStart,txtSrc,txtDest,txtDet,txtSeats,txtPhone,txtCo
             public void onResponse(String response) {
                 if (response.equals("success")) {
                     Toast.makeText(Drive_activity.this, "You have left the ride", Toast.LENGTH_SHORT).show();
+                    countAccepted--;
+                    mainButton();
                 } else
                     Toast.makeText(Drive_activity.this, "Some error happened", Toast.LENGTH_SHORT).show();
             }

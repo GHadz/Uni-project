@@ -40,12 +40,12 @@ public class DriveChildRecyclerAdapter extends RecyclerView.Adapter<DriveChildRe
 
     private FragmentActivity i;
     private LayoutInflater inflater;
-    private DriveParentRecyclerAdapter parent; //to add request to accepted list after we accept it
-    public DriveChildRecyclerAdapter(Context context, FragmentActivity i,LayoutInflater layoutInflater,DriveParentRecyclerAdapter p) {
+    private DriveChildRecyclerAdapter2 acc; //to add request to accepted list after we accept it
+    public DriveChildRecyclerAdapter(Context context, FragmentActivity i,LayoutInflater layoutInflater,DriveChildRecyclerAdapter2 acc) {
         c = context;
         this.i = i;
         inflater = layoutInflater;
-        parent = p;
+        this.acc = acc;
     }
 
     @NonNull
@@ -95,7 +95,7 @@ public class DriveChildRecyclerAdapter extends RecyclerView.Adapter<DriveChildRe
             public void onClick(View v) {
                 accept(requests.get(holder.getAdapterPosition()).getRequestID(),holder.getAdapterPosition());
                 Toast.makeText(i.getBaseContext(),"You accepted this request.",Toast.LENGTH_SHORT).show();
-                parent.addAccepted(requests.get(holder.getAdapterPosition()));
+                acc.addRequests(requests.get(holder.getAdapterPosition()));
             }
         });
         holder.reject.setOnClickListener(new View.OnClickListener() {

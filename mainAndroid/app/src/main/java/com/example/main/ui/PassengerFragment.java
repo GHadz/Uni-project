@@ -156,6 +156,15 @@ private boolean toFanar,conditionsDown;
 
     }
 
+public void onResume()
+{
+    super.onResume();
+    if(txtReq.getVisibility() == View.VISIBLE && txtUp.getVisibility() == View.VISIBLE)
+    {
+        myReqButton();
+    }
+}
+
 //search for a ride
     public void search()
     {

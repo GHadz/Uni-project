@@ -47,7 +47,7 @@ public class LoginFragment extends Fragment {
         inEmail = view.findViewById(R.id.inEmail);
         inPassword = view.findViewById(R.id.inPassword);
         button = view.findViewById(R.id.button);
-        txt = view.findViewById(R.id.textView3);
+
         button.setOnClickListener(this::login);
 
         return view;

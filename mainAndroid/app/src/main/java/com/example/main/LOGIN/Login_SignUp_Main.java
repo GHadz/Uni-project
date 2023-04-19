@@ -13,7 +13,7 @@ public class Login_SignUp_Main extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     private ViewPagerAdapter adapter;
-    public static final String ip = "192.168.1.107"; // the ip to pass to all java files
+    public static final String ip = "192.168.1.106"; // the ip to pass to all java files
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

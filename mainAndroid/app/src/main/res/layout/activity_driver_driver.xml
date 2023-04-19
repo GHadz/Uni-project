@@ -43,15 +43,19 @@
 
     <TextView
         android:id="@+id/txtDet"
-        android:layout_width="114dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:scrollbars="vertical"
+
+        android:layout_height="40dp"
         android:layout_marginTop="21dp"
         android:text="Details:"
         android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="@+id/txtCondition"
         app:layout_constraintEnd_toEndOf="@+id/txtSrc"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="@+id/txtSrc"
-        app:layout_constraintTop_toBottomOf="@+id/txtSrc" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSrc"
+        app:layout_constraintVertical_bias="0.103" />
 
     <TextView
         android:id="@+id/txtCondition"

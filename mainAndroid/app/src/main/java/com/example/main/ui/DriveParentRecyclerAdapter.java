@@ -1,9 +1,11 @@
 package com.example.main.ui;
 
 import static com.example.main.LOGIN.Login_SignUp_Main.ip;
+import static com.example.main.MainActivity.user_id;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,14 +50,11 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
     private final String URL5 = "http://"+ip+"//carpool/passenger/drive_details.php";
     private boolean listDown;
     private ArrayList <Drive> drives;
-    private ArrayList <Requests> requests;
-    private ArrayList <Requests> requests2;
+
     private Boolean down;
     private CustomAdapter customAdapter;
     private Context context;
-    private DriveChildRecyclerAdapter2 adapter2;
     private FragmentActivity i;
-    private DriveChildRecyclerAdapter adapter;
     private LayoutInflater inflater; //for the dialog inflater
     private ListView list;
     private DriverFragment parent; //to access function from the parent fragment
@@ -63,12 +62,10 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
         this.context = context;
         this.i = i;
         down = false;
-        requests = new ArrayList<>();
-        requests2 = new ArrayList<>();
+
         parent = p;
         drives = new ArrayList<>();
-        adapter = new DriveChildRecyclerAdapter(context,i,layout,this);
-        adapter2 = new DriveChildRecyclerAdapter2(context,i,layout);
+
         inflater = layout;
     }
 
@@ -83,17 +80,17 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        DriveChildRecyclerAdapter2 adapter2 = new DriveChildRecyclerAdapter2(context,i,inflater);
+        DriveChildRecyclerAdapter adapter = new DriveChildRecyclerAdapter(context,i,inflater,adapter2);
+
         String a,b,c;
-        a = "";
-        b= "";
-        c= "";
-        a= holder.txtStatus.getText().toString();
-        if (a.equals("Ongoing")) holder.startBtn.setText(R.string.end);
-        a+=drives.get(position).getStatus();
-        c= holder.txtTime.getText().toString();
-        c+=drives.get(position).getDate();
-        b = holder.txtNbr.getText().toString();
-        b+=Integer.toString(drives.get(position).getPassengerNbr());
+
+        if (drives.get(position).getStatus().equals("Ongoing")) holder.startBtn.setText(R.string.end);
+        a="Status: " + drives.get(position).getStatus();
+
+        c="Time: "+drives.get(position).getDate();
+
+        b="Passenger Count: " + drives.get(position).getPassengerNbr();
         b+="/";
         b+=Integer.toString(drives.get(position).getCapacity());
         holder.txtStatus.setText(a);
@@ -111,9 +108,7 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
                 list = customLayout.findViewById(R.id.conditionList);
                 getDetails(customLayout,s);
                 getConditions(customLayout,s);
-                builder.setView(customLayout);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+
                 TextView txtCondition = customLayout.findViewById(R.id.txtCondition);
                 listDown = false;
                 txtCondition.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +126,9 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
                     }
                 });
                 Button btn = customLayout.findViewById(R.id.okBtn);
+                builder.setView(customLayout);
+                AlertDialog dialog = builder.create();
+                dialog.show();
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -164,8 +162,8 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
         holder.rec2.setLayoutManager(horizontal2);
 
         //get the requests
-        getMyReqs(holder,holder.rec, drives.get(position).getDriveId());
-        getMyAcceptedReq(holder,holder.rec2, drives.get(position).getDriveId());
+        getMyReqs(adapter,holder.rec, drives.get(position).getDriveId());
+        getMyAcceptedReq(adapter2,holder.rec2, drives.get(position).getDriveId());
         //show requests button
         holder.req.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -260,22 +258,14 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
         }
     }
 
-    public DriveChildRecyclerAdapter getAdapter() {
-        return adapter;
-    }
 
-    public void addAccepted(Requests r)
-    {
-        adapter2.addRequests(r);
-    }
-
-
-    public void getMyAcceptedReq(ViewHolder h, RecyclerView r, String driveId)
+    public void getMyAcceptedReq(DriveChildRecyclerAdapter2 adapter2, RecyclerView r, String driveId)
     {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL3, new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {
+                ArrayList <Requests> requests2 = new ArrayList<>();
                 JSONArray array;
                 try {
 
@@ -317,12 +307,13 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
         requestQueue.add(stringRequest);
     }
 
-    public void getMyReqs(ViewHolder h, RecyclerView r, String driveId)
+    public void getMyReqs(DriveChildRecyclerAdapter adapter, RecyclerView r, String driveId)
     {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {
+                ArrayList <Requests> requests = new ArrayList<>();
                 JSONArray array;
                 try {
 
@@ -339,7 +330,7 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
                         requests.add(new Requests(id,name,rating ,det,phone));
                     }
                     adapter.setRequests(requests);
-                   r.setAdapter(adapter);
+                    r.setAdapter(adapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -373,10 +364,11 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
                 {
                     if(status.equals("Cancelled")) {
                         drives.remove(position);
+                        notifyDataSetChanged();
                         Toast.makeText(context,"Ride was cancelled.",Toast.LENGTH_SHORT).show();
                     }
                     else if(status.equals("Ongoing")) {
-                        h.txtStatus.setText("Status:".concat(status));
+                        h.txtStatus.setText("Status: "+ status);
                         h.startBtn.setText(R.string.end);
                         drives.get(position).setStatus(status);
                         Toast.makeText(context,"Ride has started.",Toast.LENGTH_SHORT).show();
@@ -385,6 +377,7 @@ public class DriveParentRecyclerAdapter extends RecyclerView.Adapter<DriveParent
                         drives.remove(position);
                         Toast.makeText(context,"Ride has ended.",Toast.LENGTH_SHORT).show();
                         notifyDataSetChanged();
+                        return;
                     }
 
                     parent.checkEmpty();
@@ -433,6 +426,7 @@ s= txtSrc.getText().toString(); des =txtDest.getText().toString();det =txtDet.ge
                         txtSrc.setText(source);
                         txtDest.setText(dest);
                         txtDet.setText(details);
+                        txtDet.setMovementMethod(new ScrollingMovementMethod());
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -450,6 +444,7 @@ s= txtSrc.getText().toString(); des =txtDest.getText().toString();det =txtDet.ge
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> data = new HashMap<>();
                 data.put("id", id);
+                data.put("userId",user_id);
                 return data;
             }
         };

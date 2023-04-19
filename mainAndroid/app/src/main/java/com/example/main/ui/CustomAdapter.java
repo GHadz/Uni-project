@@ -111,21 +111,21 @@ public class CustomAdapter  extends BaseAdapter {
         holder.condition.setText(modelArrayList.get(position).getCondition());
         holder.checkBox.setChecked(modelArrayList.get(position).getSelected());
         holder.checkBox.setClickable(click);
-        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    idsChecked.add(position);
-                    modelArrayList.get(position).setSelected(true);
+        if (click) {
+            holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        idsChecked.add(position);
+                        modelArrayList.get(position).setSelected(true);
+                    } else {
+                        int i = idsChecked.indexOf(position);
+                        idsChecked.remove(i); //when unchecked
+                        modelArrayList.get(position).setSelected(false);
+                    }
                 }
-                else {
-                    int i = idsChecked.indexOf(position);
-                    idsChecked.remove(i); //when unchecked
-                    modelArrayList.get(position).setSelected(false);
-                }
-            }
-        });
-
+            });
+        }
         return convertView;
     }
 

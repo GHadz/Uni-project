@@ -48,10 +48,19 @@ public class RequestsRecyclerViewAdapter extends RecyclerView.Adapter<RequestsRe
 
     @Override
     public void onBindViewHolder(@NonNull RequestsRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.txtName.setText(requests.get(position).getDriverName());
-        holder.txtTime.setText(requests.get(position).getDate());
-        holder.txtDest.setText(requests.get(position).getDestination());
-        holder.txtSrc.setText(requests.get(position).getSource());
+        String a,b,c1,d;
+        a = holder.txtName.getText().toString();
+        a+= requests.get(position).getDriverName();
+        b=holder.txtTime.getText().toString();
+        b+=requests.get(position).getDate();
+        c1=holder.txtDest.getText().toString();
+        c1+=requests.get(position).getDestination();
+        d=holder.txtSrc.getText().toString();
+        d+=requests.get(position).getSource();
+        holder.txtName.setText(a);
+        holder.txtTime.setText(b);
+        holder.txtDest.setText(c1);
+        holder.txtSrc.setText(d);
         String id1 = requests.get(position).getRequestID();
         //button to cancel the request with the listener
         holder.btn.setOnClickListener(new View.OnClickListener() {

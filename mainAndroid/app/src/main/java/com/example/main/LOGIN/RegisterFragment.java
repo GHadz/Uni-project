@@ -71,7 +71,7 @@ public class RegisterFragment extends Fragment {
                         public void onResponse(String response) {
                             if (response.equals("success"))
                             {
-                                tvStatus.setText("success register");
+                                tvStatus.setText("You registered successfully!");
                                 Toast.makeText(view.getContext(),"You registered successfully!",Toast.LENGTH_SHORT).show();
                                 button.setClickable(false); //so that the button stops working
                                 new android.os.Handler().postDelayed( //go back to login activity after delay
