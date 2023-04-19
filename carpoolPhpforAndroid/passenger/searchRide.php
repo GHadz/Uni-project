@@ -73,7 +73,7 @@ else if (isset($_POST["src"])) {
   $param1 = $_POST["src"];
   $param3 = $_POST["id"];
 
-if ( mysqli_stmt_prepare($stmt,"SELECT rides.rideID,users.userName,rides.startDate,A.locationName,B.locationName FROM rides,users,locations A,locations B,statuses WHERE rides.driverID !=? AND rides.driverID = users.userID AND rides.statusID = statuses.statusID AND statuses.statusName = 'Starting Soon'AND rides.sourceID = A.locationID AND A.locationName=? AND rides.destinationID = B.locationID")) 
+if ( mysqli_stmt_prepare($stmt,"SELECT rides.rideID,users.userName,rides.startDate,A.locationName,B.locationName FROM rides,users,locations A,locations B,statuses WHERE rides.driverID !=? AND rides.driverID = users.userID AND rides.statusID = statuses.statusID AND statuses.statusName = 'Starting Soon'AND rides.sourceID = A.locationID AND A.locationName=? AND rides.destinationID = B.locationID ORDER BY users.userDriverRating;")) 
 {
   mysqli_stmt_bind_param($stmt,"ss",$param3, $param1);
     // Execute query
